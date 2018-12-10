@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block title  %}
 	<title>Car Detail</title>
-</head>
-<body>
-		<h1>
-			{{car.make}} - {{car.model}}
-			<small>
-				{{car.year}}
-			</small>
-		</h1>
-		<hr>
-</body>
-</html>
+{% endblock title %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 d-flex align-items-stretch"
+				<div class="card" >
+				  <img class="card-img-top" src="{{car.car_img.url}}" alt="Card image cap" style="height: 740px; object-fit: cover; margin: 25px;">
+				  <div class="card-body">
+				    <h5 class="card-title">{{car.model}}</h5>
+				    <p class="card-text">{{car.make}} - {{car.year}}</p>
+				    <a href="{% url 'car-delete' car_id=car.id %}" class="btn btn-primary">Delete Car</a>
+				    <a href="{% url 'car-update' car_id=car.id %}" class="btn btn-primary">Update</a>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
+
